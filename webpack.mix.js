@@ -11,13 +11,15 @@ const mix = require('laravel-mix');
  |
  */
 
+/* eslint-disable */
 mix.js('resources/js/app.js', 'public/js')
-    .postCss('resources/css/app.css', 'public/css', [
-        require('tailwindcss'),
-    ])
-    .vue()
-    .sourceMaps();
+  .postCss('resources/css/app.css', 'public/css', [
+    require('tailwindcss'),
+    require('autoprefixer'),
+  ])
+  .vue()
+  .sourceMaps();
 
 if (mix.inProduction()) {
-    mix.version();
+  mix.version();
 }

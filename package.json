@@ -9,7 +9,7 @@
         "prod": "npm run production",
         "production": "mix --production",
         "lint": "npx eslint resources/**/*.{js,vue}",
-        "lint-fix": "npx eslint resources/**/*.{js,vue} --fix"
+        "lint:fix": "npx eslint resources/**/*.{js,vue} --fix"
     },
     "dependencies": {
         "axios": "^0.21",
@@ -19,13 +19,13 @@
     },
     "devDependencies": {
         "@tailwindcss/forms": "^0.2.1",
-        "autoprefixer": "^10.2.4",
+        "autoprefixer": "^10.1.0",
         "eslint": "^7.19",
         "eslint-config-airbnb-base": "^14.2.1",
         "eslint-plugin-import": "^2.22.1",
         "eslint-plugin-vue": "^7.5.0",
         "laravel-mix": "^6.0.6",
-        "postcss": "^8.1.14",
+        "postcss": "^8.2.1",
         "tailwindcss": "^2.0.2",
         "vue-template-compiler": "^2.6.10"
     }
