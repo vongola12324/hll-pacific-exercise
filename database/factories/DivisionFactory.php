@@ -22,11 +22,13 @@ class DivisionFactory extends Factory
     public function definition()
     {
         return [
-            'force_id' => null,
-            'name'     => $this->faker->randomElement(
+            'force_id'           => null,
+            'name'               => $this->faker->randomElement(
                 ['Commander', 'Infantry', 'Tanks', 'Recon', 'Artillery', 'Reserve']
             ),
-            'limit'    => 2,
+            'limit_squad'        => 3,
+            'limit_squad_player' => 3,
+            'limit_total_player' => -1,
         ];
     }
 }

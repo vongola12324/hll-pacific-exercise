@@ -11,7 +11,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id
  * @property int|null $force_id
  * @property string $name
- * @property int $limit
+ * @property int $limit_squad
+ * @property int $limit_squad_player
+ * @property int $limit_total_player
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\Force|null $force
@@ -35,7 +37,9 @@ class Division extends Model
     protected $fillable = [
         'force_id',
         'name',
-        'limit',
+        'limit_squad',
+        'limit_squad_player',
+        'limit_total_player',
     ];
 
     public function force()
