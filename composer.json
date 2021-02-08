@@ -14,7 +14,8 @@
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
-        "marc-mabe/php-enum": "^4.4"
+        "marc-mabe/php-enum": "^4.4",
+        "yish/generators": "^3.2"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.9",
