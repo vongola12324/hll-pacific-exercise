@@ -15,7 +15,13 @@ class BattleController extends Controller
      */
     public function index()
     {
-        //
+        $battles = Battle::paginate();
+        return view('manage.battle.index')->with(
+            [
+                'battles' => $battles,
+                'keys' => ['id', 'name', 'action']
+            ]
+        );
     }
 
     /**
