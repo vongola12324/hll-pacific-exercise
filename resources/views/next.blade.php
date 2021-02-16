@@ -3,5 +3,5 @@
 @section('title', 'Welcome!')
 
 @section('content')
-    <welcome-page></welcome-page>
+    <next-page></next-page>
 @endsection
