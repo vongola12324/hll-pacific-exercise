@@ -36,3 +36,6 @@ If you are in production environment, please setup your web server, e.g., Nginx,
 # Example
 systemctl start nginx mariadb
 ```
+
+## Admin Account
+You can use `php artisan make:admin` to create admin account, reset user password, and change user's profile.
