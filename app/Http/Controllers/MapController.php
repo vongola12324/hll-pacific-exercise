@@ -21,9 +21,10 @@ class MapController extends Controller
     public function index()
     {
         $maps = Map::all();
-        return view()->with(
+        return view('manage.map.index')->with(
             [
                 'maps' => $maps,
+                'keys' => ['id', 'name', 'action']
             ]
         );
     }
@@ -35,7 +36,7 @@ class MapController extends Controller
      */
     public function create()
     {
-        return view();
+        return view('manage.map.create');
     }
 
     /**
@@ -47,22 +48,7 @@ class MapController extends Controller
     public function store(MapPostRequest $request)
     {
         Map::create($request->only(['name']));
-        return redirect()->route('map.index');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param Map $map
-     * @return Application|Factory|View|Response
-     */
-    public function show(Map $map)
-    {
-        return view()->with(
-            [
-                'map' => $map,
-            ]
-        );
+        return redirect()->route('manage.map.index');
     }
 
     /**
@@ -73,7 +59,7 @@ class MapController extends Controller
      */
     public function edit(Map $map)
     {
-        return view()->with(
+        return view('manage.map.edit')->with(
             [
                 'map' => $map,
             ]
@@ -90,7 +76,7 @@ class MapController extends Controller
     public function update(MapPostRequest $request, Map $map)
     {
         $map->update($request->only(['name']));
-        return redirect()->route('map.show', [$map]);
+        return redirect()->route('manage.map.index');
     }
 
     /**
@@ -103,6 +89,6 @@ class MapController extends Controller
     public function destroy(Map $map)
     {
         $map->delete();
-        return redirect()->route('map.index');
+        return redirect()->route('manage.map.index');
     }
 }
