@@ -126,6 +126,9 @@
       <path value="$PROJECT_DIR$/vendor/symfony/filesystem" />
       <path value="$PROJECT_DIR$/vendor/marc-mabe/php-enum" />
       <path value="$PROJECT_DIR$/vendor/yish/generators" />
+      <path value="$PROJECT_DIR$/vendor/intervention/image" />
+      <path value="$PROJECT_DIR$/vendor/laravolt/avatar" />
+      <path value="$PROJECT_DIR$/vendor/konradkalemba/blade-components-scoped-slots" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.3" />

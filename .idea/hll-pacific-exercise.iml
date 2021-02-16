@@ -128,6 +128,9 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/filesystem" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/marc-mabe/php-enum" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/yish/generators" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/intervention/image" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/laravolt/avatar" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/konradkalemba/blade-components-scoped-slots" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
