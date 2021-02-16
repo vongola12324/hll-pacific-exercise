@@ -4,16 +4,15 @@ namespace App\Services\BattleGenerators;
 
 use App\Models\Battle;
 use App\Models\Map;
-use Illuminate\Database\Eloquent\Model;
 
 class BattleGenerator
 {
     /**
      * @param Map $map
      * @param array $battleInformation
-     * @return Battle|Model
+     * @return Battle
      */
-    public function generate(Map $map, array $battleInformation)
+    public static function generate(Map $map, array $battleInformation): Battle
     {
         return Battle::create(
             [

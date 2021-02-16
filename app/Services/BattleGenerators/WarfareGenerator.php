@@ -2,6 +2,7 @@
 
 namespace App\Services\BattleGenerators;
 
+use App\Models\Battle;
 use App\Models\Division;
 use App\Models\Force;
 use App\Models\Map;
@@ -10,7 +11,7 @@ class WarfareGenerator extends BattleGenerator
 {
     protected $repository;
 
-    public function generate(Map $map, array $battleInformation)
+    public static function generate(Map $map, array $battleInformation): Battle
     {
         // Create Battle
         $battle = parent::generate($map, $battleInformation);
@@ -75,5 +76,6 @@ class WarfareGenerator extends BattleGenerator
                 array_push($divisions, $division);
             }
         }
+        return $battle;
     }
 }

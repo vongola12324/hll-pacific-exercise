@@ -6,6 +6,8 @@ use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
 
 /**
@@ -49,12 +51,19 @@ class Battle extends Model
     ];
 
     protected $casts = [
+        'max_people' => 'integer',
+        'mode'       => 'integer',
         'meeting_at' => 'datetime',
         'match_at'   => 'datetime',
     ];
 
-    public function map()
+    public function map(): BelongsTo
     {
         return $this->belongsTo(Map::class);
+    }
+
+    public function forces(): HasMany
+    {
+        return $this->hasMany(Force::class);
     }
 }
