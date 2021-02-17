@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.front')
 
 @section('title', 'Welcome!')
 
-@section('content')
-    <welcome-page></welcome-page>
+@section('console')
+    <welcome-page :links="{{ json_encode($links) }}"></welcome-page>
 @endsection

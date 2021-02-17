@@ -5,27 +5,67 @@ namespace App\Http\Controllers;
 use App\Models\Battle;
 use App\Models\Division;
 use App\Models\Squad;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Validator;
 
 class FrontpageController extends Controller
 {
+    /**
+     * Index Page
+     * @return Application|Factory|View
+     */
     public function welcome()
     {
-        return view('welcome');
+        return view('welcome')->with(
+            [
+                'links' => [
+                    'next'    => route('next'),
+                    'history' => route('history'),
+                ],
+            ]
+        );
     }
 
+    /**
+     * Last battle page
+     * Squad leader can join last battle in this page
+     * @return Application|Factory|View
+     */
     public function next()
     {
-        $battle = Battle::latest();
-        return view('next')->with(['battle' => $battle, 'join_api' => route('api.join')]);
+        $battle = Battle::latest()->first();
+        return view('next')->with(
+            [
+                'battle' => $battle->load(['forces.divisions.squads']),
+                'links'  => [
+                    'index'   => route('index'),
+                    'history' => route('history'),
+                    'joinApi' => route('api.join'),
+                ],
+            ]
+        );
     }
 
+    /**
+     * Battle History
+     * @return Application|Factory|View
+     */
     public function history()
     {
         $battles = Battle::paginate(10);
-        return view('history')->with(['battles' => $battles]);
+        return view('history')->with(
+            [
+                'battles' => $battles,
+                'links'   => [
+                    'index' => route('index'),
+                    'next'  => route('next'),
+                ],
+            ]
+        );
     }
 
     /**

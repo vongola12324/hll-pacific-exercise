@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.front')
 
 @section('title', 'Welcome!')
 
-@section('content')
-    <next-page></next-page>
+@section('console')
+    <next-page :battle="{{ json_encode($battle) }}"  :links="{{ json_encode($links) }}"></next-page>
 @endsection

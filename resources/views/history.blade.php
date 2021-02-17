@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.front')
 
 @section('title', 'Welcome!')
 
-@section('content')
-    <history-page></history-page>
+@section('console')
+    <history-page :battles="{{ json_encode($battles) }}" :links="{{ json_encode($links) }}"></history-page>
 @endsection
