@@ -33,32 +33,32 @@ class WarfareGenerator extends BattleGenerator
         // Create Division
         $divisionLimits = [
             'Commander' => [
-                'limit_squad'  => 1,
+                'limit_squad'        => 1,
                 'limit_squad_player' => 1,
                 'limit_total_player' => 1,
             ],
             'Infantry'  => [
-                'limit_squad'  => -1,
+                'limit_squad'        => -1,
                 'limit_squad_player' => 6,
                 'limit_total_player' => -1,
             ],
             'Tanks'     => [
-                'limit_squad'  => 6,
+                'limit_squad'        => 6,
                 'limit_squad_player' => 3,
                 'limit_total_player' => -1,
             ],
             'Recon'     => [
-                'limit_squad'  => 2,
+                'limit_squad'        => 2,
                 'limit_squad_player' => 2,
                 'limit_total_player' => -1,
             ],
             'Artillery' => [
-                'limit_squad'  => 3,
+                'limit_squad'        => 3,
                 'limit_squad_player' => 3,
                 'limit_total_player' => 3,
             ],
             'Reserve'   => [
-                'limit_squad'  => -1,
+                'limit_squad'        => -1,
                 'limit_squad_player' => 6,
                 'limit_total_player' => 49,
             ],
@@ -66,13 +66,15 @@ class WarfareGenerator extends BattleGenerator
         $divisions = [];
         foreach ($forces as $force) {
             foreach ($divisionLimits as $divisionName => $limit) {
-                $division = Division::create([
-                    'force_id' => $force->id,
-                    'name'     => $divisionName,
-                    'limit_squad' => $limit['limit_squad'],
-                    'limit_squad_player' => $limit['limit_squad_player'],
-                    'limit_total_player' => $limit['limit_total_player'],
-                ]);
+                $division = Division::create(
+                    [
+                        'force_id'           => $force->id,
+                        'name'               => $divisionName,
+                        'limit_squad'        => $limit['limit_squad'],
+                        'limit_squad_player' => $limit['limit_squad_player'],
+                        'limit_total_player' => $limit['limit_total_player'],
+                    ]
+                );
                 array_push($divisions, $division);
             }
         }

@@ -100,9 +100,11 @@ class BattleController extends Controller
      */
     public function show(Battle $battle)
     {
-        return view('manage.battle.show')->with([
-            'battle' => $battle->load(['map', 'forces.divisions.squads'])
-        ]);
+        return view('manage.battle.show')->with(
+            [
+                'battle' => $battle->load(['map', 'forces.divisions.squads']),
+            ]
+        );
     }
 
     /**

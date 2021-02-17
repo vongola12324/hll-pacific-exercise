@@ -3,9 +3,9 @@
 namespace App\Http\Requests;
 
 use App\Constants\BattleMode;
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
-use Illuminate\Contracts\Validation\Validator;
 
 class BattlePostRequest extends FormRequest
 {

@@ -28,16 +28,21 @@ class ProfileController extends Controller
      */
     public function doPasswordChange(Request $request): RedirectResponse
     {
-        $this->validate($request, [
-            'old_password' => ['required', 'string'],
-            'new_password' => ['required', 'string', 'confirm']
-        ]);
+        $this->validate(
+            $request,
+            [
+                'old_password' => ['required', 'string'],
+                'new_password' => ['required', 'string', 'confirm'],
+            ]
+        );
         /** @var User $user */
         $user = auth()->user();
         if (Hash::check($request->get('old_password'), $user->password)) {
-            $user->update([
-                'password' => Hash::make($request->get('new_password')),
-            ]);
+            $user->update(
+                [
+                    'password' => Hash::make($request->get('new_password')),
+                ]
+            );
             return redirect()->route('dashboard');
         }
         return redirect()->back();

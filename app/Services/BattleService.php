@@ -24,11 +24,11 @@ class BattleService
         return call_user_func_array(
             [
                 $this->registerBattleGenerator()[$battleInformation['mode']],
-                'generate'
+                'generate',
             ],
             [
                 $map,
-                $battleInformation
+                $battleInformation,
             ]
         );
     }
@@ -55,7 +55,7 @@ class BattleService
             array_push(
                 $result,
                 [
-                    'key'  => $value,
+                    'key'         => $value,
                     'description' => $key,
                 ]
             );

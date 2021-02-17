@@ -2,8 +2,12 @@
 
 namespace App\Models;
 
+use Eloquent;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 /**
  * App\Models\Division
@@ -14,21 +18,21 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $limit_squad
  * @property int $limit_squad_player
  * @property int $limit_total_player
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\Force|null $force
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Squad[] $squads
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property-read Force|null $force
+ * @property-read Collection|Squad[] $squads
  * @property-read int|null $squads_count
- * @method static \Illuminate\Database\Eloquent\Builder|Division newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Division newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Division query()
- * @method static \Illuminate\Database\Eloquent\Builder|Division whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Division whereForceId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Division whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Division whereLimit($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Division whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Division whereUpdatedAt($value)
- * @mixin \Eloquent
+ * @method static Builder|Division newModelQuery()
+ * @method static Builder|Division newQuery()
+ * @method static Builder|Division query()
+ * @method static Builder|Division whereCreatedAt($value)
+ * @method static Builder|Division whereForceId($value)
+ * @method static Builder|Division whereId($value)
+ * @method static Builder|Division whereLimit($value)
+ * @method static Builder|Division whereName($value)
+ * @method static Builder|Division whereUpdatedAt($value)
+ * @mixin Eloquent
  */
 class Division extends Model
 {

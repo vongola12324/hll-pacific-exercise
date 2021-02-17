@@ -65,16 +65,17 @@ class FrontpageController extends Controller
         if ($amount + $division->squads->sum('amount') > $division->limit_total_player) {
             return response()->json(['msg' => 'To many people in this division!', 'result' => []], 400);
         }
-        if ($amount + $force->divisions->sum(function ($target) {
-            /** @var Division $target */
-            return $target->squads->sum('amount');
-        }) > $force->max_people) {
+        if ($amount + $force->divisions->sum(
+                function ($target) {
+                    /** @var Division $target */
+                    return $target->squads->sum('amount');
+                }
+            ) > $force->max_people) {
             return response()->json(['msg' => 'To many people in this force!', 'result' => []], 400);
         }
         // Create Squad
         $squad = Squad::create($request->only(['division_id', 'name', 'amount', 'steam_id',]));
 
         return response()->json(['msg' => 'Ok.', 'result' => $squad], 200);
-
     }
 }

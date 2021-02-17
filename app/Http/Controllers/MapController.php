@@ -24,7 +24,7 @@ class MapController extends Controller
         return view('manage.map.index')->with(
             [
                 'maps' => $maps,
-                'keys' => ['id', 'name', 'action']
+                'keys' => ['id', 'name', 'action'],
             ]
         );
     }
