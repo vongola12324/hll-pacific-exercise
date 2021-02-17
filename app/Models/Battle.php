@@ -53,6 +53,7 @@ class Battle extends Model
     protected $casts = [
         'max_people' => 'integer',
         'mode'       => 'integer',
+        'map_id'     => 'integer',
         'meeting_at' => 'datetime',
         'match_at'   => 'datetime',
     ];

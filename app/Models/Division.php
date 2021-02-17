@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
 
 /**
@@ -46,12 +48,19 @@ class Division extends Model
         'limit_total_player',
     ];
 
-    public function force()
+    protected $casts = [
+        'force_id'           => 'integer',
+        'limit_squad'        => 'integer',
+        'limit_squad_player' => 'integer',
+        'limit_total_player' => 'integer',
+    ];
+
+    public function force(): BelongsTo
     {
         return $this->belongsTo(Force::class);
     }
 
-    public function squads()
+    public function squads(): HasMany
     {
         return $this->hasMany(Squad::class);
     }

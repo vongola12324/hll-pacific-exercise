@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
 
 /**
@@ -42,12 +44,17 @@ class Force extends Model
         'max_people',
     ];
 
-    public function battle()
+    protected $casts = [
+        'battle_id'  => 'integer',
+        'max_people' => 'integer',
+    ];
+
+    public function battle(): BelongsTo
     {
         return $this->belongsTo(Battle::class);
     }
 
-    public function divisions()
+    public function divisions(): HasMany
     {
         return $this->hasMany(Division::class);
     }

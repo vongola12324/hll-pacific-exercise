@@ -6,6 +6,7 @@ use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Carbon;
 
 /**
@@ -42,7 +43,12 @@ class Squad extends Model
         'steam_id',
     ];
 
-    public function division()
+    protected $casts = [
+        'division_id' => 'integer',
+        'amount'      => 'integer',
+    ];
+
+    public function division(): BelongsTo
     {
         return $this->belongsTo(Division::class);
     }
