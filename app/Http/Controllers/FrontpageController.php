@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Battle;
 use App\Models\Division;
 use App\Models\Squad;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Validator;
 
@@ -18,7 +19,7 @@ class FrontpageController extends Controller
     public function next()
     {
         $battle = Battle::latest();
-        return view('next')->with(['battle' => $battle]);
+        return view('next')->with(['battle' => $battle, 'join_api' => route('api.join')]);
     }
 
     public function history()
@@ -30,6 +31,7 @@ class FrontpageController extends Controller
     /**
      * [API] Squad join into division
      * @param Request $request
+     * @return JsonResponse
      */
     public function join(Request $request)
     {
