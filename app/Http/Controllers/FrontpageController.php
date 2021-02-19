@@ -11,6 +11,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Validator;
+use App\Constants\BattleMode;
 
 class FrontpageController extends Controller
 {
@@ -40,12 +41,13 @@ class FrontpageController extends Controller
         $battle = Battle::latest()->first();
         return view('next')->with(
             [
-                'battle' => $battle->load(['forces.divisions.squads']),
+                'battle' => $battle->load(['forces.divisions.squads','map']),
                 'links'  => [
                     'index'   => route('index'),
                     'history' => route('history'),
                     'joinApi' => route('api.join'),
                 ],
+                'modes' => BattleMode::getConstants(),
             ]
         );
     }
