@@ -98,13 +98,13 @@ class FrontpageController extends Controller
         }
         // Check there is still having space
         $amount = $request->get('amount');
-        if ($division->squads_count >= $division->limit_squad) {
+        if ($division->limit_squad !== -1 && $division->squads_count >= $division->limit_squad) {
             return response()->json(['msg' => 'To many squads in this division!', 'result' => []], 400);
         }
-        if ($amount > $division->limit_squad_player) {
+        if ($division->limit_squad_player !== -1 && $amount > $division->limit_squad_player) {
             return response()->json(['msg' => 'To many people in the squad in this division!', 'result' => []], 400);
         }
-        if ($amount + $division->squads->sum('amount') > $division->limit_total_player) {
+        if ($division->limit_total_player !== -1 && $amount + $division->squads->sum('amount') > $division->limit_total_player) {
             return response()->json(['msg' => 'To many people in this division!', 'result' => []], 400);
         }
         if ($amount + $force->divisions->sum(
