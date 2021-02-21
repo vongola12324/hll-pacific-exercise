@@ -2,7 +2,7 @@
   <div class="flex items-top justify-center h-full font-mono font-semibold">
     <div class="flex flex-col w-9/12 md:w-10/12 bg-gradient-to-br from-gray-50 opacity-70 min-h-3/4 rounded-3xl items-center my-5">
       <div class="h-10 w-full rounded-3xl bg-gray-50 bg-opacity-50 items-center justify-center text-center">
-        <h1 class="text-4xl">HLL Pacific Exercise</h1>
+        <h1 class="text-4xl">HLL RIMPAC</h1>
       </div>
       <div class="flex flex-col bg-gray-100 bg-opacity-90 w-11/12 rounded-3xl mt-5 p-2">
         <p class="text-2xl text-center">{{ battleInfo.battleName }} </p>

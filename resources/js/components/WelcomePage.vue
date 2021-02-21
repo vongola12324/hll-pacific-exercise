@@ -6,10 +6,11 @@
     </div> -->
     <div class="flex flex-col w-9/12 md:w-5/6 bg-gradient-to-br from-gray-50 opacity-70 min-h-3/4 rounded-3xl items-center">
       <div class="h-10 w-full rounded-3xl bg-gray-50 bg-opacity-50 items-center justify-center text-center">
-        <h1 class="text-4xl">HLL Pacific Exercise</h1>
+        <h1 class="text-4xl">HLL RIMPAC</h1>
       </div>
       <div class="flex flex-col bg-gray-100 bg-opacity-90 w-5/6 rounded-3xl mt-5 p-4">
-        <p>HLL Pacific Exercise is a public game but on squad level, players are no longer individuals , in Asia time zone (GMT+8). The core value of Hell let loose is to use military tactics: maneuver, flank, ambush, frontal assault. All this can not be achieved withoutaround squad play. we offer a more competitive game</p>
+        <p>HLL RIMPAC is a public game but with more tactics and coordination in it. Basic elements in HLL RIMPAC are no longer random individuals, but established squads formed by friends and clan members. </p>
+        <p>Team up with your friends and sign up as infantry, tank or recon squads at :</p>
       </div>
       <div class="flex flex-col bg-gray-100 bg-opacity-90 rounded-3xl mt-5 w-5/6 p-4">
         <h3 class="text-lg">How to join:</h3>
@@ -18,7 +19,7 @@
             <svg class="w-5 inline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="orange">
               <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
             </svg>
-            team up with friends, 1 for cmdr, 5-6 for infantry squad, 2-3 for tank, 2 for recon, 1-2 for arty.
+            team up with friends, 1 for commander, 5-6 for infantry squad, 2-3 for tank, 2 for recon, 1-2 for arty.
           </li>
           <li>
             <svg class="w-5 inline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="orange">
@@ -53,18 +54,18 @@
             <svg class="w-5 inline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="#10B981">
               <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z" />
             </svg>
-            command language: simple English, squad language: see as you fit. 
+            command language: simple English, squad language: see as you fit
           </li>
           <li>
             <svg class="w-5 inline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="#10B981">
               <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z" />
             </svg>
-            be cooperative, responsive, coordinate, follow instructions.
+            be cooperative, responsive, coordinate, and have fun
           </li>
         </ul>
       </div>
       <div class="flex flex-col bg-gray-100 bg-opacity-90 rounded-3xl mt-5 w-5/6 p-4">
-        <h3 class="text-lg">Basic rules:</h3>
+        <h3 class="text-lg">Timetable:</h3>
         <ul>
           <li>
             <svg class="w-5 inline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="#818CF8">
@@ -94,13 +95,13 @@
             <svg class="w-5 inline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="#818CF8">
               <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
             </svg>
-            20:20 - 20:30  Map reset. One round on set map. Have Fun.
+            20:20 - 20:30  Map reset. One round on set map.
           </li>
           <li>
             <svg class="w-5 inline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="#818CF8">
               <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
             </svg>
-            20:30 - 22:00 game on, have fun!
+            20:30 - 22:00 game on, have fun
           </li>
         </ul>
       </div>
