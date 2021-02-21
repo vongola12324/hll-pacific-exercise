@@ -38,10 +38,10 @@ class FrontpageController extends Controller
      */
     public function next()
     {
-        $battle = Battle::latest()->first();
+        $battle = Battle::latest()->with(['forces.divisions.squads','map'])->first();
         return view('next')->with(
             [
-                'battle' => $battle->load(['forces.divisions.squads','map']),
+                'battle' => $battle,
                 'links'  => [
                     'index'   => route('index'),
                     'history' => route('history'),
