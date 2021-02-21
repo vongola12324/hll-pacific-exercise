@@ -2,10 +2,13 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
-    purge: [
-        './resources/views/**/*.blade.php',
-        './resources/views/**/*.{vue,js,ts,jsx,tsx}'
-    ],
+    purge: {
+        enabled: false,
+        content: [
+            './resources/views/**/*.blade.php',
+            './resources/views/**/*.{vue,js,ts,jsx,tsx}'
+        ],
+    },
 
     theme: {
         extend: {
@@ -31,5 +34,7 @@ module.exports = {
         },
     },
 
-    plugins: [require('@tailwindcss/forms')],
+    plugins: [
+        require('@tailwindcss/forms')
+    ],
 };
