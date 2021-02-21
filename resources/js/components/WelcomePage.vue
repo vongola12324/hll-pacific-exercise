@@ -140,15 +140,15 @@ export default {
   },
   methods: {
     goDiscord() {
-      window.open('https://discord.gg/77D9Te7S3H ')
+      window.open('https://discord.gg/77D9Te7S3H ');
     },
     goNext() {
-      location.href = this.links.next
+      location.href = this.links.next;
     },
     goHistory() {
-      //location.href = this.links.history
-    }
-  }
+      // location.href = this.links.history
+    },
+  },
 };
 </script>
 
