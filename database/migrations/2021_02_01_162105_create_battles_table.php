@@ -18,8 +18,8 @@ class CreateBattlesTable extends Migration
             $table->unsignedBigInteger('map_id')->nullable()->default(null);
             $table->string('name');
             $table->tinyInteger('mode');
-            $table->timestamp('meeting_at');
-            $table->timestamp('match_at');
+            $table->timestamp('meeting_at')->nullable();
+            $table->timestamp('match_at')->nullable();
             $table->unsignedInteger('max_people');
             $table->timestamps();
 

@@ -375,5 +375,8 @@ $RECYCLE.BIN/
 # End of https://www.toptal.com/developers/gitignore/api/windows,linux,macos,jetbrains,visualstudiocode,vim,phpunit,laravel,node,vue
 ### Project
 /public/css/app.css
+/public/css/app.css.map
 /public/js/app.js
+/public/js/app.js.LICENSE.txt
+/public/js/app.js.map
 /public/mix-manifest.json
