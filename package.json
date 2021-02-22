@@ -29,6 +29,7 @@
         "eslint-plugin-vue": "^7.5.0",
         "laravel-mix": "^6.0.6",
         "postcss": "^8.2.6",
+        "qs": "^6.9.6",
         "tailwindcss": "^2.0.3",
         "vue-loader": "15.9.5",
         "vue-template-compiler": "^2.6.10"

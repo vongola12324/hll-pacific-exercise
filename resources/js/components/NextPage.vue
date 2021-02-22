@@ -20,7 +20,7 @@
           {{ force.name }} Forces <br>
           <div class="bg-gray-50 text-black w-full font-semibold rounded-lg mt-1" v-for="(division,dIndex) in force.divisions" :key="'Force_'+fIndex+'Division_'+dIndex">
             <div>
-              {{ division.name }}: 
+              {{ division.name }}:
               <div class="inline cursor-pointer" v-if="division.squads.length < division.limit_squad || division.limit_squad == -1" @click="goNewSquad(division.id)">
                 <svg class="w-5 inline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="#1F2937">
                   <path d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z" />
@@ -51,7 +51,7 @@
         </p>
         <p>test</p>
         <p>Squad name <t-input v-model="register.data.name"/></p>
-        <p>Number of Players 
+        <p>Number of Players
           <t-richSelect v-model="register.data.amount" :options="register.setting.options"/>
         </p>
         <p>
@@ -65,6 +65,8 @@
 </template>
 
 <script>
+import qs from 'qs';
+
 export default {
   name: 'NextPage',
   props: {
@@ -79,79 +81,73 @@ export default {
     modes: {
       type: Object,
       required: true,
-    }
+    },
   },
   data() {
     return {
       battleInfo: {
-        battleName: "",
-        mapName: "",
-        mode: "",
+        battleName: '',
+        mapName: '',
+        mode: '',
         startTime: new Date().toString(),
         meetingTime: new Date().toString(),
       },
       divisions: [],
-      register:{
-        data:{
+      register: {
+        data: {
           division_id: 0,
-          name: "",
+          name: '',
           amount: 1,
-          steam_id: "",
+          steam_id: '',
         },
         setting: {
           limit_squad_player: 1,
           limit_total_player: 1,
-          name: "",
+          name: '',
           options: [],
-          force_name: "",
-        }
-      }
-    }
+          force_name: '',
+        },
+      },
+    };
   },
   mounted() {
-    this.battleInfo.battleName = this.battle.name
-    this.battleInfo.mapName = this.battle.map.name
-    this.battleInfo.mode = Object.keys(this.modes)[this.battle.mode]
-    const meeting = new Date(this.battle.meeting_at)
-    this.battleInfo.meetingTime = meeting.getFullYear() + '/' + (meeting.getMonth()+1) + '/' + meeting.getDate() + ' ' + meeting.getHours() + ':' + this.minutes_with_leading_zeros(meeting) + ' GMT+8:00'
-    const start = new Date(this.battle.match_at)
-    this.battleInfo.startTime = start.getFullYear() + '/' + (start.getMonth()+1) + '/' + start.getDate() + ' ' + start.getHours() + ':' + this.minutes_with_leading_zeros(start) + ' GMT+8:00'
-    this.divisions = [...this.battle.forces[0].divisions,...this.battle.forces[1].divisions]
+    this.battleInfo.battleName = this.battle.name;
+    this.battleInfo.mapName = this.battle.map.name;
+    this.battleInfo.mode = Object.keys(this.modes)[this.battle.mode];
+    const meeting = new Date(this.battle.meeting_at);
+    this.battleInfo.meetingTime = `${meeting.getFullYear()}/${meeting.getMonth() + 1}/${meeting.getDate()} ${meeting.getHours()}:${this.minutes_with_leading_zeros(meeting)} GMT+8:00`;
+    const start = new Date(this.battle.match_at);
+    this.battleInfo.startTime = `${start.getFullYear()}/${start.getMonth() + 1}/${start.getDate()} ${start.getHours()}:${this.minutes_with_leading_zeros(start)} GMT+8:00`;
+    this.divisions = [...this.battle.forces[0].divisions, ...this.battle.forces[1].divisions];
   },
   methods: {
-    goNewSquad(squadId){
-      const targetDiv = this.divisions.find(element=>element.id==squadId)
-      this.register.setting.limit_squad_player = targetDiv.limit_squad_player
-      this.register.setting.limit_total_player = targetDiv.limit_total_player
-      this.register.setting.name = targetDiv.name
-      this.register.data.division_id = squadId
-      for(let i = 1; i <= targetDiv.limit_squad_player; i++){
-        this.register.setting.options.push(i)
+    goNewSquad(squadId) {
+      const targetDiv = this.divisions.find((element) => element.id == squadId);
+      this.register.setting.limit_squad_player = targetDiv.limit_squad_player;
+      this.register.setting.limit_total_player = targetDiv.limit_total_player;
+      this.register.setting.name = targetDiv.name;
+      this.register.data.division_id = squadId;
+      for (let i = 1; i <= targetDiv.limit_squad_player; i++) {
+        this.register.setting.options.push(i);
       }
-      this.register.setting.force_name = (targetDiv.force_id==1)?"Axis":"Allied"
+      this.register.setting.force_name = (targetDiv.force_id == 1) ? 'Axis' : 'Allied';
     },
     createSquad() {
-      axios.post(this.links.joinApi, {
-        // division_id: 0, // Division Id
-        // name: 'Test Squad', // Squad Name
-        // amount: 3, // How many people in this squad
-        // steam_id: 'xxxxxx', // Steam_id of the leader
-        ...this.register.data
-      }).then((response) => {
+      axios.post(this.links.joinApi, qs.stringify(this.register.data)).then((response) => {
         if (response.status === 200) {
           console.log('Success!');
           // console.log(`Squad: ${response.data.result}`);
         } else {
           console.log('Failed!');
-          console.log(response.data.msg)
+          console.log(response.data.msg);
         }
-      }).finally(()=>{
-        window.location.reload()
+      }).finally(() => {
+        window.location.reload();
       });
     },
-    minutes_with_leading_zeros(dt) { 
+    minutes_with_leading_zeros(dt) {
       return (dt.getMinutes() < 10 ? '0' : '') + dt.getMinutes();
-    }
+    },
   },
 };
 </script>
