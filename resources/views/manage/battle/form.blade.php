@@ -2,13 +2,13 @@
     @csrf
     @method($formMethod)
     <t-input-group label="Map" class="mb-3">
-        <t-select :options="{{ json_encode($maps) }}" value-attribute="id" text-attribute="text" name="map_id" placeholder="Please select one map." :hide-search-box="true" value="{{ !is_null($battle) ? $battle->map_id : '' }}"></t-select>
+        <t-select :options="{{ json_encode($maps) }}" value-attribute="id" text-attribute="text" name="map_id" placeholder="Please select one map." :hide-search-box="true" @isset($battle) :value="{{ $battle->map_id }}" @endisset></t-select>
     </t-input-group>
     <t-input-group label="Name" class="mb-3">
         <t-input value="{{ $battle->name ?? '' }}" type="text" name="name" placeholder="Your battle name."></t-input>
     </t-input-group>
     <t-input-group label="Mode" class="mb-3">
-        <t-radio-group :options="{{ json_encode($modes) }}" value-attribute="key" text-attribute="description" name="mode"></t-radio-group>
+        <t-radio-group :options="{{ json_encode($modes) }}" @isset($battle) :value="{{ $battle->mode }}" @endisset value-attribute="key" text-attribute="description" name="mode"></t-radio-group>
     </t-input-group>
     <t-input-group label="Meeting At" class="mb-3">
         <datetime-picker name="meeting_at" value="{{ !is_null($battle) ? $battle->meeting_at : '' }}"></datetime-picker>
