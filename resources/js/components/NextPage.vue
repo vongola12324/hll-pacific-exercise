@@ -135,14 +135,11 @@ export default {
     createSquad() {
       axios.post(this.links.joinApi, qs.stringify(this.register.data)).then((response) => {
         if (response.status === 200) {
-          console.log('Success!');
-          // console.log(`Squad: ${response.data.result}`);
+          window.location.reload();
         } else {
           console.log('Failed!');
           console.log(response.data.msg);
         }
-      }).finally(() => {
-        window.location.reload();
       });
     },
     minutes_with_leading_zeros(dt) {
