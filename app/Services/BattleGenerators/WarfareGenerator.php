@@ -60,10 +60,9 @@ class WarfareGenerator extends BattleGenerator
                 'limit_total_player' => 49,
             ],
         ];
-        $divisions = [];
         foreach ($forces as $force) {
             foreach ($divisionLimits as $divisionName => $limit) {
-                $division = Division::create(
+                Division::create(
                     [
                         'force_id'           => $force->id,
                         'name'               => $divisionName,
@@ -72,7 +71,6 @@ class WarfareGenerator extends BattleGenerator
                         'limit_total_player' => $limit['limit_total_player'],
                     ]
                 );
-                array_push($divisions, $division);
             }
         }
         return $battle;
