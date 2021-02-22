@@ -42,7 +42,7 @@ class WarfareGenerator extends BattleGenerator
                 'limit_squad_player' => 6,
                 'limit_total_player' => -1,
             ],
-            'Tanks'     => [
+            'Tank'     => [
                 'limit_squad'        => 6,
                 'limit_squad_player' => 3,
                 'limit_total_player' => -1,
