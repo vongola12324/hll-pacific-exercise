@@ -11,11 +11,8 @@ class WarfareGenerator extends BattleGenerator
 {
     protected $repository;
 
-    public static function generate(Map $map, array $battleInformation): Battle
+    public static function generate(Battle $battle): Battle
     {
-        // Create Battle
-        $battle = parent::generate($map, $battleInformation);
-
         // Create Force
         $forceNames = ['Axis', 'Allied'];
         $forces = [];

@@ -27,13 +27,13 @@ class BattlePostRequest extends FormRequest
     public function rules()
     {
         return [
-            'map_id'       => ['required', 'exists:maps,id'],
-            'name'         => ['required', 'string'],
-            'mode'         => ['required', Rule::in(BattleMode::getValues())],
-            'meeting_at'   => ['required', 'date'],
-            'match_at'     => ['required', 'date'],
-            'max_people'   => ['required', 'integer', 'min:0'],
-            'use_template' => ['nullable', 'boolean'],
+            'map_id'            => ['required', 'exists:maps,id'],
+            'name'              => ['required', 'string'],
+            'mode'              => ['required', Rule::in(BattleMode::getValues())],
+            'meeting_at'        => ['required', 'date'],
+            'match_start_after' => ['required', 'integer', 'min:10', 'max:180'],
+            'max_people'        => ['required', 'integer', 'min:0'],
+            'use_template'      => ['nullable', 'boolean'],
         ];
     }
 

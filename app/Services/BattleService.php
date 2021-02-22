@@ -8,6 +8,7 @@ use App\Models\Map;
 use App\Services\BattleGenerators\DeOffenceGenerator;
 use App\Services\BattleGenerators\UsOffenceGenerator;
 use App\Services\BattleGenerators\WarfareGenerator;
+use Carbon\Carbon;
 use Illuminate\Support\Collection;
 
 class BattleService
@@ -17,20 +18,33 @@ class BattleService
     /**
      * @param Map $map
      * @param array $battleInformation
+     * @param bool $useTemplate
      * @return Battle
      */
-    public function generate(Map $map, array $battleInformation): Battle
+    public function generate(Map $map, array $battleInformation, bool $useTemplate): Battle
     {
-        return call_user_func_array(
+        $battle = Battle::create(
             [
-                $this->registerBattleGenerator()[$battleInformation['mode']],
-                'generate',
-            ],
-            [
-                $map,
-                $battleInformation,
+                'map_id'     => $map->id,
+                'name'       => $battleInformation['name'],
+                'mode'       => $battleInformation['mode'],
+                'meeting_at' => Carbon::parse($battleInformation['meeting_at'])->setTimezone(config('app.timezone')),
+                'match_at'   => Carbon::parse($battleInformation['meeting_at'])->setTimezone(config('app.timezone'))->addMinutes($battleInformation['match_start_after']),
+                'max_people' => $battleInformation['max_people'],
             ]
         );
+        if ($useTemplate) {
+            call_user_func_array(
+                [
+                    $this->registerBattleGenerator()[$battleInformation['mode']],
+                    'generate',
+                ],
+                [
+                    $battle,
+                ]
+            );
+        }
+        return $battle;
     }
 
     /**

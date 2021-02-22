@@ -13,11 +13,11 @@
     <t-input-group label="Meeting At" class="mb-3">
         <datetime-picker name="meeting_at" value="{{ !is_null($battle) ? $battle->meeting_at : '' }}"></datetime-picker>
     </t-input-group>
-    <t-input-group label="Match Start At" class="mb-3">
-        <datetime-picker name="match_at" value="{{ !is_null($battle) ? $battle->match_at : '' }}" ></datetime-picker>
+    <t-input-group label="Match Start After (Minutes)" class="mb-3">
+        <t-input @isset($battle) :value="{{ $battle->match_at->diffInMinutes($battle->meeting_at)  }}" @endisset type="number" min="10" max="180" name="match_start_after"></t-input>
     </t-input-group>
     <t-input-group label="Max People" class="mb-3">
-        <t-input value="{{ $battle->max_people ?? 0 }}" type="number" name="max_people" min="0"></t-input>
+        <t-input value="{{ $battle->max_people ?? 100 }}" type="number" name="max_people" min="2"></t-input>
     </t-input-group>
     @empty($battle)
         <t-input-group label="Generate Force&Division" class="mb-3">

@@ -4,25 +4,16 @@ namespace App\Services\BattleGenerators;
 
 use App\Models\Battle;
 use App\Models\Map;
+use Carbon\Carbon;
 
 class BattleGenerator
 {
     /**
-     * @param Map $map
-     * @param array $battleInformation
+     * @param Battle $battle
      * @return Battle
      */
-    public static function generate(Map $map, array $battleInformation): Battle
+    public static function generate(Battle $battle): Battle
     {
-        return Battle::create(
-            [
-                'map_id'     => $map->id,
-                'name'       => $battleInformation['name'],
-                'mode'       => $battleInformation['mode'],
-                'meeting_at' => $battleInformation['meeting_at'],
-                'match_at'   => $battleInformation['match_at'],
-                'max_people' => $battleInformation['max_people'],
-            ]
-        );
+        return $battle;
     }
 }

@@ -6,6 +6,7 @@ use App\Http\Requests\BattlePostRequest;
 use App\Models\Battle;
 use App\Models\Map;
 use App\Services\BattleService;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -61,34 +62,20 @@ class BattleController extends Controller
      */
     public function store(BattlePostRequest $request): RedirectResponse
     {
-        if ($request->has('use_template') && $request->boolean('use_template', false)) {
-            $map = Map::whereId($request->get('map_id'))->first();
-            $battle = $this->battleService->generate(
-                $map,
-                $request->only(
-                    [
-                        'name',
-                        'mode',
-                        'meeting_at',
-                        'match_at',
-                        'max_people',
-                    ]
-                )
-            );
-        } else {
-            $battle = Battle::create(
-                $request->only(
-                    [
-                        'map_id',
-                        'name',
-                        'mode',
-                        'meeting_at',
-                        'match_at',
-                        'max_people',
-                    ]
-                )
-            );
-        }
+        $map = Map::whereId($request->get('map_id'))->first();
+        $battle = $this->battleService->generate(
+            $map,
+            $request->only(
+                [
+                    'name',
+                    'mode',
+                    'meeting_at',
+                    'match_start_after',
+                    'max_people',
+                ]
+            ),
+            $request->has('use_template') && $request->boolean('use_template', false)
+        );
         return redirect()->route('manage.battle.show', $battle);
     }
 
@@ -134,16 +121,14 @@ class BattleController extends Controller
     public function update(BattlePostRequest $request, Battle $battle): RedirectResponse
     {
         $battle->update(
-            $request->only(
-                [
-                    'map_id',
-                    'name',
-                    'mode',
-                    'meeting_at',
-                    'match_at',
-                    'max_people',
-                ]
-            )
+            [
+                'map_id' => $request->get('map_id'),
+                'name'=> $request->get('name'),
+                'mode'=> $request->get('mode'),
+                'meeting_at'=> Carbon::parse($request->get('meeting_at'))->setTimezone(config('app.timezone')),
+                'max_people'=> $request->get('max_people'),
+                'match_at' => Carbon::parse($request->get('meeting_at'))->setTimezone(config('app.timezone'))->addMinutes($request->get('match_start_after')),
+            ]
         );
         return redirect()->route('manage.battle.show', $battle);
     }
