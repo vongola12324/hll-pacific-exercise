@@ -23,6 +23,7 @@ use Illuminate\Support\Carbon;
  * @property-read Battle|null $battle
  * @property-read Collection|Division[] $divisions
  * @property-read int|null $divisions_count
+ * @property-read int $total_people
  * @method static Builder|Force newModelQuery()
  * @method static Builder|Force newQuery()
  * @method static Builder|Force query()
@@ -49,6 +50,10 @@ class Force extends Model
         'max_people' => 'integer',
     ];
 
+    protected $appends = [
+        'total_people'
+    ];
+
     public function battle(): BelongsTo
     {
         return $this->belongsTo(Battle::class);
@@ -57,5 +62,15 @@ class Force extends Model
     public function divisions(): HasMany
     {
         return $this->hasMany(Division::class);
+    }
+
+    public function getTotalPeopleAttribute(): int
+    {
+        return $this->divisions->sum(
+            function ($target) {
+                /** @var Division $target */
+                return $target->squads->sum('amount');
+            }
+        );
     }
 }
