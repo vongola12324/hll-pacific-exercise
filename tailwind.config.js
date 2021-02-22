@@ -5,7 +5,8 @@ module.exports = {
     purge: {
         content: [
             './resources/**/*.blade.php',
-            './resources/**/*.{vue,js,ts,jsx,tsx}'
+            './resources/**/*.{vue,js,ts,jsx,tsx}',
+            'node_modules/vue-tailwind/dist/*.js',
         ],
     },
 
