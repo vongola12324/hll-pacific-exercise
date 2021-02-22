@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>@yield('title') - {{ env('app_name', 'Laravel') }}</title>
+    <title>@yield('title') - {{ env('APP_NAME', 'Laravel') }}</title>
 
     <link href="{{ asset(mix('css/app.css')) }}" rel="stylesheet">
     @stack('css')
