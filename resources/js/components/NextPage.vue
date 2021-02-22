@@ -8,20 +8,25 @@
         <p class="text-2xl text-center">{{ battleInfo.battleName }} </p>
         <p class="text-3xl text-center">{{ battleInfo.mapName }}</p>
         <p class="text-3xl text-center">{{ battleInfo.mode }}</p>
+        <p class="text-3xl text-center">{{ battleDate }}</p>
         <p class="text-2xl text-center">Meeting at : {{ battleInfo.meetingTime }}</p>
         <p class="text-2xl text-center">Start at : {{ battleInfo.startTime }}</p>
         <span class="text-xl text-center">
-          <a class="inline" :href="links.index">rules</a> / <a class="inline" href="https://discord.gg/77D9Te7S3H ">discord</a>
+          <a class="inline underline" :href="links.index">Rules</a> 
+          | <a class="inline underline" href="https://discord.gg/77D9Te7S3H ">Discord</a>
         </span>
       </div>
 
       <div class="flex flex-wrap bg-gray-100 bg-opacity-90 w-11/12 rounded-3xl mt-5 p-2 justify-evenly text-lg">
         <div class="bg-gray-800 text-white rounded-xl w-5/12 text-center p-1 font-semibold" v-for="(force,fIndex) in battle.forces" :key="'Force_'+fIndex">
-          {{ force.name }} Forces <br>
+          {{ force.name }} Forces
+          <br>
+          ({{force.total_people}} players)
+          <br>
           <div class="bg-gray-50 text-black w-full font-semibold rounded-lg mt-1" v-for="(division,dIndex) in force.divisions" :key="'Force_'+fIndex+'Division_'+dIndex">
             <div>
               {{ division.name }}:
-              <div class="inline cursor-pointer" v-if="division.squads.length < division.limit_squad || division.limit_squad == -1" @click="goNewSquad(division.id)">
+              <div class="inline cursor-pointer" v-if="checkSquadLive(division,(force.total_people < force.max_people))" @click="goNewSquad(division.id)">
                 <svg class="w-5 inline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="#1F2937">
                   <path d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z" />
                 </svg>
@@ -93,6 +98,8 @@ export default {
         meetingTime: new Date().toString(),
       },
       divisions: [],
+      battleDate: "",
+      available:"",
       register: {
         data: {
           division_id: 0,
@@ -115,10 +122,13 @@ export default {
     this.battleInfo.mapName = this.battle.map.name;
     this.battleInfo.mode = Object.keys(this.modes)[this.battle.mode];
     const meeting = new Date(this.battle.meeting_at);
-    this.battleInfo.meetingTime = `${meeting.getFullYear()}/${meeting.getMonth() + 1}/${meeting.getDate()} ${meeting.getHours()}:${this.minutes_with_leading_zeros(meeting)} GMT+8:00`;
+    this.battleInfo.meetingTime = `${meeting.getHours()}:${this.minutes_with_leading_zeros(meeting)} (GMT+8)`;
     const start = new Date(this.battle.match_at);
-    this.battleInfo.startTime = `${start.getFullYear()}/${start.getMonth() + 1}/${start.getDate()} ${start.getHours()}:${this.minutes_with_leading_zeros(start)} GMT+8:00`;
+    this.battleInfo.startTime = `${start.getHours()}:${this.minutes_with_leading_zeros(start)} (GMT+8)`;
+    this.battleDate = `${meeting.getFullYear()}/${meeting.getMonth() + 1}/${meeting.getDate()}`;
     this.divisions = [...this.battle.forces[0].divisions, ...this.battle.forces[1].divisions];
+    const today = new Date();
+    this.available = (today < meeting)
   },
   methods: {
     goNewSquad(squadId) {
@@ -145,6 +155,9 @@ export default {
     minutes_with_leading_zeros(dt) {
       return (dt.getMinutes() < 10 ? '0' : '') + dt.getMinutes();
     },
+    checkSquadLive(division,available) {
+      return (division.squads.length < division.limit_squad || division.limit_squad == -1 ) && (division.total_people < division.limit_total_player || division.limit_total_player == -1) && (available) && this.available
+    }
   },
 };
 </script>

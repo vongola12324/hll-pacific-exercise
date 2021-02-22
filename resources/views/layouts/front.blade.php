@@ -5,7 +5,7 @@
     @yield('console')
   </div>    
   <div id="footer"  class="w-screen text-white text-center">
-    Powered by Vongola AoMaple
+    Powered by Vongola, AoMaple
   </div>
 @endsection
 
@@ -18,7 +18,7 @@
       height: 100%;
     }
     body{
-      background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.7)), url("{{ asset('image/hll-background.jpg') }}");
+      background-image: linear-gradient(rgba(0,0,0,0.9),rgba(0,0,0,0.7)), url("{{ asset('image/hll-background.jpg') }}");
       background-position: center center;
       background-repeat: no-repeat;
       background-attachment: fixed;
